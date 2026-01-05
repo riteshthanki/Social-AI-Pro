@@ -1,0 +1,172 @@
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SocialPro AI - Creative Studio</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+      :root {
+        --studio-bg: #030305;
+        --accent-primary: #6366f1;
+        --accent-secondary: #a855f7;
+        --border-subtle: rgba(255, 255, 255, 0.06);
+        --text-muted: #71717a;
+      }
+      body {
+        font-family: 'Inter', sans-serif;
+        background-color: var(--studio-bg);
+        color: #f4f4f5;
+        overflow-x: hidden;
+        -webkit-font-smoothing: antialiased;
+      }
+      .brand-font {
+        font-family: 'Plus Jakarta Sans', sans-serif;
+      }
+      
+      /* Smooth Aurora Background */
+      .aurora-bg {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+        z-index: -1;
+        overflow: hidden;
+        filter: blur(140px);
+        opacity: 0.3;
+      }
+      .aurora-blob {
+        position: absolute;
+        width: 900px;
+        height: 900px;
+        border-radius: 50%;
+        background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
+        animation: drift 30s infinite alternate ease-in-out;
+      }
+      .blob-2 {
+        background: linear-gradient(135deg, #ec4899, #8b5cf6);
+        right: -150px;
+        top: -100px;
+        animation-delay: -10s;
+      }
+      @keyframes drift {
+        0% { transform: translate(-10%, -10%) rotate(0deg) scale(1); }
+        50% { transform: translate(5%, 10%) rotate(45deg) scale(1.05); }
+        100% { transform: translate(10%, -5%) rotate(90deg) scale(0.95); }
+      }
+
+      .glass-panel {
+        background: rgba(12, 12, 16, 0.65);
+        backdrop-filter: blur(40px);
+        border: 1px solid var(--border-subtle);
+      }
+      
+      .active-glow {
+        box-shadow: 0 0 50px -15px rgba(99, 102, 241, 0.4);
+      }
+
+      @keyframes float {
+        0%, 100% { transform: translateY(0); }
+        50% { transform: translateY(-15px); }
+      }
+      .animate-float {
+        animation: float 8s ease-in-out infinite;
+      }
+
+      @keyframes shimmer {
+        0% { transform: translateX(-100%); }
+        100% { transform: translateX(100%); }
+      }
+      .animate-shimmer {
+        animation: shimmer 3s infinite linear;
+      }
+
+      /* Refined typography for prose */
+      .prose-custom h3 {
+        color: white;
+        font-family: 'Plus Jakarta Sans', sans-serif;
+        font-weight: 700;
+        font-size: 1.25rem;
+        margin-top: 2rem;
+        margin-bottom: 0.75rem;
+        letter-spacing: -0.01em;
+        line-height: 1.4;
+      }
+      .prose-custom p {
+        margin-bottom: 1.25rem;
+        color: #a1a1aa;
+        line-height: 1.8;
+        font-size: 1rem;
+      }
+      .prose-custom li {
+        margin-bottom: 0.75rem;
+        color: #d4d4d8;
+      }
+
+      /* Scanning Animation */
+      @keyframes scan-line {
+        0% { top: -10%; }
+        100% { top: 110%; }
+      }
+      .scanning-beam::after {
+        content: '';
+        position: absolute;
+        width: 100%;
+        height: 2px;
+        background: linear-gradient(to right, transparent, var(--accent-primary), transparent);
+        box-shadow: 0 0 15px var(--accent-primary);
+        animation: scan-line 2.5s infinite linear;
+      }
+
+      /* Entry animations */
+      @keyframes content-reveal {
+        from { opacity: 0; transform: translateY(15px); }
+        to { opacity: 1; transform: translateY(0); }
+      }
+      .stagger-item {
+        opacity: 0;
+        animation: content-reveal 0.8s cubic-bezier(0.2, 0, 0, 1) forwards;
+      }
+      .stagger-item:nth-child(1) { animation-delay: 0.05s; }
+      .stagger-item:nth-child(2) { animation-delay: 0.1s; }
+      .stagger-item:nth-child(3) { animation-delay: 0.15s; }
+      .stagger-item:nth-child(4) { animation-delay: 0.2s; }
+      .stagger-item:nth-child(5) { animation-delay: 0.25s; }
+
+      ::-webkit-scrollbar {
+        width: 6px;
+      }
+      ::-webkit-scrollbar-track {
+        background: transparent;
+      }
+      ::-webkit-scrollbar-thumb {
+        background: rgba(255, 255, 255, 0.08);
+        border-radius: 10px;
+      }
+      ::-webkit-scrollbar-thumb:hover {
+        background: rgba(255, 255, 255, 0.15);
+      }
+    </style>
+  <script type="importmap">
+{
+  "imports": {
+    "react": "https://esm.sh/react@^19.2.3",
+    "react/": "https://esm.sh/react@^19.2.3/",
+    "@google/genai": "https://esm.sh/@google/genai@^1.34.0",
+    "react-dom/": "https://esm.sh/react-dom@^19.2.3/",
+    "lucide-react": "https://esm.sh/lucide-react@^0.562.0"
+  }
+}
+</script>
+</head>
+  <body>
+    <div class="aurora-bg">
+      <div class="aurora-blob"></div>
+      <div class="aurora-blob blob-2"></div>
+    </div>
+    <div id="root"></div>
+  </body>
+</html>
